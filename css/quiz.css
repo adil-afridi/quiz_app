@@ -1,0 +1,63 @@
+  /* Resetting default styles */
+  * {
+    box-sizing: border-box;
+    margin: 0;
+    padding: 0;
+}
+
+/* Basic styling for the form container */
+.container {
+    max-width: 600px;
+    margin: 0 auto;
+    padding: 20px;
+}
+
+/* Styling for the form header */
+.container h2 {
+    margin-bottom: 20px;
+    text-align: center;
+}
+
+/* Styling for input groups */
+.input_groups {
+    margin-bottom: 20px;
+}
+
+.input_groups label {
+    display: block;
+    font-weight: bold;
+    margin-bottom: 5px;
+}
+
+.input_groups input[type="text"] {
+    width: 100%;
+    padding: 10px;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+    outline: none;
+}
+
+.input_groups .options {
+    display: flex;
+    flex-wrap: wrap;
+}
+
+.input_groups .options label {
+    margin-right: 20px;
+}
+
+/* Styling for the submit button */
+button {
+    width: auto;
+    padding: 10px;
+    background-color: #007bff;
+    color: #fff;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    transition: background-color 0.3s ease;
+}
+
+button:hover {
+    background-color: #0056b3;
+}

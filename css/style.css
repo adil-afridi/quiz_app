@@ -1,0 +1,72 @@
+/* Resetting default styles */
+* {
+    box-sizing: border-box;
+    margin: 0;
+    padding: 0;
+}
+
+/* Basic styling for the form container */
+.container {
+    width: 100%;
+    margin: 0 auto;
+    padding: 20px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+/* Styling for the form header */
+.container form h2 {
+    margin: 20px 0;
+    text-align: start;
+    text-transform: capitalize;
+    color: #007bff;
+}
+
+
+.container form{
+    margin-top: 5%;
+    width: 400px;
+    padding: 20px;
+    border-radius: 10px;
+}
+
+/* Styling for input groups */
+.input_groups {
+    margin-bottom: 20px;
+}
+
+.input_groups input {
+    width: 100%;
+    padding: 10px;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+    outline: none;
+}
+
+.input_groups input:focus{
+    border: 1px solid #007bff;
+}
+
+/* Styling for validation messages */
+.msg {
+    color: red;
+    font-size: 14px;
+    margin-top: 5px;
+}
+
+/* Styling for the submit button */
+button {
+    width: 100%;
+    padding: 10px;
+    background-color: #007bff;
+    color: #fff;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    transition: background-color 0.3s ease;
+}
+
+button:hover {
+    background-color: #0056b3;
+}

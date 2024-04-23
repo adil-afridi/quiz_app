@@ -1,0 +1,127 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Quiz Application Form</title>
+<link rel="stylesheet" href="./css/quiz.css">
+</head>
+<body><div class="container">
+    <form action="">
+        <h2 style="color: #007bff;">Web Development Quiz</h2>
+
+        <div id="timer" style="color: darkred;"></div>
+        <div class="input_groups">
+            <label>Question 1: What does HTML stand for?</label>
+            <div class="options">
+                <label><input type="radio" name="q1" value="hypertext_markup_language"> Hypertext Markup Language</label>
+                <label><input type="radio" name="q1" value="hyperlink_text_markup_language"> Hyperlink Text Markup Language</label>
+                <label><input type="radio" name="q1" value="home_tool_markup_language"> Home Tool Markup Language</label>
+                <label><input type="radio" name="q1" value="hypertext_management_language"> Hypertext Management Language</label>
+            </div>
+        </div>
+        <div class="input_groups">
+            <label>Question 2: What is the latest version of CSS?</label>
+            <div class="options">
+                <label><input type="radio" name="q2" value="css2"> CSS2</label>
+                <label><input type="radio" name="q2" value="css3"> CSS3</label>
+                <label><input type="radio" name="q2" value="css4"> CSS4</label>
+                <label><input type="radio" name="q2" value="css5"> CSS5</label>
+            </div>
+        </div>
+        <div class="input_groups">
+            <label>Question 3: Which programming language is NOT used for frontend web development?</label>
+            <div class="options">
+                <label><input type="radio" name="q3" value="javascript"> JavaScript</label>
+                <label><input type="radio" name="q3" value="html"> HTML</label>
+                <label><input type="radio" name="q3" value="css"> CSS</label>
+                <label><input type="radio" name="q3" value="java"> Java</label>
+            </div>
+        </div>
+        <div class="input_groups">
+            <label>Question 4: Which of the following is NOT a CSS preprocessor?</label>
+            <div class="options">
+                <label><input type="radio" name="q4" value="sass"> Sass</label>
+                <label><input type="radio" name="q4" value="less"> Less</label>
+                <label><input type="radio" name="q4" value="typescript"> TypeScript</label>
+                <label><input type="radio" name="q4" value="stylus"> Stylus</label>
+            </div>
+        </div>
+        <div class="input_groups">
+            <label>Question 5: What does DOM stand for?</label>
+            <div class="options">
+                <label><input type="radio" name="q5" value="document_object_model"> Document Object Model</label>
+                <label><input type="radio" name="q5" value="data_object_model"> Data Object Model</label>
+                <label><input type="radio" name="q5" value="digital_object_model"> Digital Object Model</label>
+                <label><input type="radio" name="q5" value="dynamic_object_model"> Dynamic Object Model</label>
+            </div>
+        </div>
+        <button type="submit">Submit Quiz</button>
+    </form>
+</div>
+
+<script>
+    document.addEventListener('DOMContentLoaded', function () {
+        const form = document.querySelector('form');
+
+        const timerElement = document.getElementById('timer');
+        let timeLimit = 5 * 60; // 5 minutes in seconds
+
+        // Function to update the timer display
+        function updateTimerDisplay() {
+            const minutes = Math.floor(timeLimit / 60);
+            const seconds = timeLimit % 60;
+            timerElement.textContent = `Time left: ${minutes}:${seconds < 10 ? '0' : ''}${seconds}`;
+        }
+
+        // Function to handle timer countdown
+        function countdown() {
+            if (timeLimit > 0) {
+                timeLimit--;
+                updateTimerDisplay();
+            } else {
+                clearInterval(timerInterval);
+                form.submit(); // Submit the form when time limit is reached
+            }
+        }
+
+        // Update timer display initially
+        updateTimerDisplay();
+
+        // Start the countdown timer
+        const timerInterval = setInterval(countdown, 1000);
+
+        
+        form.addEventListener('submit', function (e) {
+            e.preventDefault();
+
+            // Retrieve selected answers
+            const q1 = document.querySelector('input[name="q1"]:checked');
+            const q2 = document.querySelector('input[name="q2"]:checked');
+            const q3 = document.querySelector('input[name="q3"]:checked');
+            const q4 = document.querySelector('input[name="q4"]:checked');
+            const q5 = document.querySelector('input[name="q5"]:checked');
+
+            // Create object to store quiz data
+            const quizData = {
+                q1: q1 ? q1.value : null,
+                q2: q2 ? q2.value : null,
+                q3: q3 ? q3.value : null,
+                q4: q4 ? q4.value : null,
+                q5: q5 ? q5.value : null
+            };
+
+            // Store data in localStorage
+            localStorage.setItem('quizData', JSON.stringify(quizData));
+
+            // Redirect to another page
+            window.location.href = 'result.html';
+
+            
+        });
+    });
+</script>
+
+
+</body>
+</html>

@@ -1,0 +1,69 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Quiz Results</title>
+</head>
+<body>
+
+    <style>
+        .container{
+            width: 100%;
+            padding: 10px 40%;
+            border-bottom: 1px solid grey;
+        }
+    </style>
+    <div class="container">
+        <h2 style="color: #007bff;">Quiz Results</h2>
+        <div id="quizResults"></div>
+    </div>
+
+    <script>
+        document.addEventListener('DOMContentLoaded', function () {
+            // Retrieve quiz data from localStorage
+            const quizData = JSON.parse(localStorage.getItem('quizData'));
+
+            // Get the container to display quiz results
+            const quizResultsContainer = document.getElementById('quizResults');
+
+            // Total number of questions in the quiz
+            const totalQuestions = 5; // Assuming there are 5 questions in the quiz
+
+            if (quizData) {
+                // Array of correct answers
+                const correctAnswers = {
+                    q1: 'hypertext_markup_language',
+                    q2: 'css3',
+                    q3: 'java',
+                    q4: 'typescript',
+                    q5: 'document_object_model'
+                };
+
+                // Calculate total number of questions attempted
+                const totalAttempted = Object.keys(quizData).length;
+
+                // Initialize counter for correct answers
+                let correctCount = 0;
+
+                // Loop through each question and check if the answer is correct
+                for (const question in quizData) {
+                    const userAnswer = quizData[question];
+                    const correctAnswer = correctAnswers[question];
+                    if (userAnswer === correctAnswer) {
+                        correctCount++;
+                    }
+                }
+
+                // Display quiz results
+                quizResultsContainer.innerHTML = `
+                    <p>Total number of questions attempted: ${totalAttempted} out of ${totalQuestions}</p>
+                    <p>Number of correct answers: ${correctCount}</p>
+                `;
+            } else {
+                quizResultsContainer.textContent = 'No quiz data found.';
+            }
+        });
+    </script>
+</body>
+</html>
