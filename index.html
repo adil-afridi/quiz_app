@@ -37,9 +37,9 @@
     <script>
         document.addEventListener('DOMContentLoaded', function () {
             const rollNo = document.querySelector('.rollNo');
-            const section = document.querySelector('.section');
             const bitch = document.querySelector('.bitch');
             const sname = document.querySelector('.sname');
+            const section = document.querySelector('.section');
             const rmsg = document.querySelector('.rmsg');
             const smsg = document.querySelector('.smsg');
             const nmsg = document.querySelector('.nmsg');
@@ -49,41 +49,44 @@
             submitBtn.addEventListener('click', function (e) {
                 if (rollNo.value === '') {
                     rmsg.innerHTML = 'please write your Roll no..!';
-                    e.preventDefault();
                     rollNo.focus();
+                    e.preventDefault();
                 } else if (rollNo.value.length < 2) {
+                    
                     rmsg.innerHTML = 'Your Roll no Digits is less than 2..!';
-                    e.preventDefault();
                     rollNo.focus();
+                    e.preventDefault();
                 } else if (sname.value === '') {
                     rmsg.innerHTML = '';
                     nmsg.innerHTML = 'Please write your name..!';
-                    e.preventDefault();
                     sname.focus();
-                }else if(bitch.value.length === ''){
-                    bmsg.innerHTML = 'Please write your bitch..!'
                     e.preventDefault();
-                    bitch.focus();
                 } else if (sname.value.length < 4) {
                     nmsg.innerHTML = 'Your name char is less than 4..!';
-                    e.preventDefault();
                     sname.focus();
-                } else if (section.value === '') {
-                    nmsg.innerHTML = '';
-                    smsg.innerHTML = 'please write your section..!';
                     e.preventDefault();
-                    section.focus();
-                }else {
-                    rmsg.innerHTML = '';
+                } else if (bitch.value === '') {
                     nmsg.innerHTML = '';
-                    smsg.innerHTML = '';
+                    bmsg.innerHTML = 'Please write your bitch..!';
+                    bitch.focus();
+                    e.preventDefault();
+                } else if (section.value === '') {
                     bmsg.innerHTML = '';
+                    smsg.innerHTML = 'please write your section..!';
+                    section.focus();
+                    e.preventDefault();
+                } else {
+                 
+                    rmsg.innerHTML = '';
+                    bmsg.innerHTML = '';
+                    smsg.innerHTML = '';
+                    nmsg.innerHTML = '';
 
                     // Create object to store data
                     const studentData = {
                         rollNo: rollNo.value,
                         name: sname.value,
-                        bitch: section.value,
+                        bitch: bitch.value,
                         section: section.value
                     };
 
@@ -92,7 +95,7 @@
 
                     // Clear form
                     document.getElementById('studentForm').reset();
-                    window.location.href = './quiz.html'
+                    window.location.href = './quiz.html';
                 }
             });
         });
